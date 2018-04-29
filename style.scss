@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#canvas {
+  background: white;
+  display: block;
+  position: relative;
+}
+
+.buttons {
+  border: 1px solid;
+  position: fixed;
+  top: 0;
+  right: 10px;
+
+  li > button {
+    display: block;
+  }
+}

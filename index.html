@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ch">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="style.css">
+	<title>Document</title>
+</head>
+<body>
+<canvas id="canvas" width=400 height=400></canvas>
+<ul class="buttons">
+	<li class="color">
+		<button>颜色</button>
+	</li>
+	<li class="pencil">
+		<button>画笔</button>
+	</li>
+	<li class="eraser">
+		<button>橡皮擦</button>
+	</li>
+	<li class="pencil-size">
+		<button>画笔大小</button>
+	</li>
+	<li class="reset-board">
+		<button>重置画板</button>
+	</li>
+</ul>
+</body>
+<script>
+  // canvas 初始化
+  let canvas = document.getElementById('canvas')
+  let ctx = canvas.getContext('2d')
+  // 橡皮擦锁，判断用户是否使用橡皮擦或者画笔
+  let useEraser = false
+  // 全局变量 —— 颜色控制
+  let color = 'black'
+  autoSetCanvasPage(canvas)
+  listenToMouse()
+
+  // 侧边栏工具条
+  // 画笔
+  setPencil()
+  // 橡皮擦
+  setEraser()
+  // 调色板
+
+  /*********/
+
+  // 画笔功能封装
+  function drawCircle(x, y, radius, color) {
+    ctx.beginPath()
+    ctx.fillStyle = color
+    ctx.arc(x, y, radius, 0, Math.PI * 2)
+    ctx.fill()
+  }
+
+  function drawLine(lastX, lastY, currentX, currentY, color) {
+    ctx.beginPath()
+    ctx.moveTo(lastX, lastY) // 起点
+    ctx.strokeStyle = color
+    ctx.lineWidth = 10
+    ctx.lineTo(currentX, currentY) // 终点
+    ctx.stroke()
+  }
+
+  // canvas画布大小自动化
+  function autoSetCanvasPage(canvas) {
+    setCanvasPage()
+    // 监听用户窗口变化，动态改变页面宽高
+    window.onresize = function () {
+      setCanvasPage()
+    }
+
+    // 封装获取用户页面宽高功能
+    function setCanvasPage() {
+      let pageWidth = document.documentElement.clientWidth
+      let pageHeight = document.documentElement.clientHeight
+      canvas.width = pageWidth
+      canvas.height = pageHeight
+    }
+  }
+
+  // 鼠标点击、移动、松开的事件监听
+  function listenToMouse() {
+    // 绘画锁，判断用户是否在画画
+    let paintingLock = false
+    // 记录用户鼠标的位移
+    let lastPoint = {
+      x: 0,
+      y: 0
+    }
+
+    canvas.onmousedown = function (e) {
+      paintingLock = true
+      let x = e.clientX
+      let y = e.clientY
+
+      // 设置lastPoint
+      lastPoint.x = x
+      lastPoint.y = y
+
+      // 判断用户是否使用的是橡皮擦
+      if (useEraser) {
+        drawCircle(x, y, 5, 'white')
+      } else {
+        drawCircle(x, y, 5, color)
+      }
+    }
+
+    canvas.onmousemove = function (e) {
+      if (paintingLock) {
+        let x = e.clientX
+        let y = e.clientY
+        if (useEraser) {
+          drawLine(lastPoint.x, lastPoint.y, x, y, 'white')
+          drawCircle(x, y, 5, 'white')
+        } else {
+          drawLine(lastPoint.x, lastPoint.y, x, y, color)
+          drawCircle(x, y, 5, color)
+        }
+
+        // 一结束就要更新lastPoint的值为最新监听到的点
+        lastPoint.x = x
+        lastPoint.y = y
+      }
+    }
+
+    canvas.onmouseup = function () {
+      paintingLock = false
+    }
+  }
+
+  // 设置画笔
+  function setPencil() {
+    let pencil = document.querySelector('.pencil')
+    pencil.addEventListener('click', function (e) {
+      console.log(e.target.tagName)
+      if (e.target.tagName === 'BUTTON') {
+        useEraser = false
+        console.log(2)
+      }
+    })
+  }
+
+  // 设置橡皮擦
+  function setEraser() {
+    let eraser = document.querySelector('.eraser')
+    eraser.addEventListener('click', function (e) {
+      console.log(e.target.tagName)
+      if (e.target.tagName === 'BUTTON') {
+        useEraser = true
+        console.log(1)
+      }
+    })
+  }
+
+
+</script>
+</html>
