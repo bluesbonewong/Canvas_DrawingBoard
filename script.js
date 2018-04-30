@@ -7,15 +7,16 @@ let useEraser = false
 let color = 'black'
 // 全局的调色板元素，给画笔/橡皮擦/调色板提供调用
 let colorBoard = document.querySelector('.color-board > button')
+// 获取到input-color，便于调节颜色
+let inputColor = document.querySelector('.buttons > .color-board input')
 autoSetCanvasPage(canvas)
 listenToUser()
 
 // 侧边栏工具条
-// 画笔
+// 铅笔
 setPencil()
 // 橡皮擦
 setEraser()
-// 调色板
 
 // 设置toggleClass
 toggleClass()
@@ -55,7 +56,7 @@ function autoSetCanvasPage(canvas) {
   }
 }
 
-// 鼠标点击、移动、松开的事件监听
+// 点击、移动、松开的事件监听
 function listenToUser() {
   // 绘画锁，判断用户是否在画画
   let paintingLock = false
@@ -72,6 +73,9 @@ function listenToUser() {
       console.log('碰我了', e)
 
       paintingLock = true
+      // 只要开始画，就立刻将inputColor.value赋值给color
+      color = inputColor.value
+
       let x = e.touches[0].clientX
       let y = e.touches[0].clientY
 
@@ -151,15 +155,12 @@ function listenToUser() {
   }
 }
 
-// 设置画笔
+// 设置铅笔
 function setPencil() {
   let pencilButton = document.querySelector('.pencil > button')
   pencilButton.addEventListener('click', function (e) {
-    console.log(e.target.tagName)
-    console.log(e.currentTarget)
     useEraser = false
     colorBoard.disabled = useEraser
-    console.log(2)
   })
 }
 
@@ -167,17 +168,9 @@ function setPencil() {
 function setEraser() {
   let eraserButton = document.querySelector('.eraser > button')
   eraserButton.addEventListener('click', function (e) {
-    console.log(1)
-    console.log(e.target)
-    console.log(e.currentTarget)
     useEraser = true
     colorBoard.disabled = useEraser
   })
-}
-
-// 设置调色板
-function setColorBoard() {
-
 }
 
 // toggleClass
