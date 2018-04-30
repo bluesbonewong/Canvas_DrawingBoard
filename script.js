@@ -23,6 +23,8 @@ setBrush()
 setEraser()
 // 重置画板
 setClearCanvas()
+// 下载
+setDownloadImage()
 
 // 设置toggleClass
 toggleClass()
@@ -194,7 +196,7 @@ function setEraser() {
   })
 }
 
-// toggleClass
+// toggleClass —— 铅笔。毛笔。橡皮擦
 function toggleClass() {
   let selectors = document.querySelectorAll('.buttons .selector')
   for (let i = 0; i < selectors.length; i++) {
@@ -207,11 +209,27 @@ function toggleClass() {
   }
 }
 
-// 清空画板
+// 设置清空画板
 function setClearCanvas() {
   let clear = document.querySelector('.reset-board > button')
   clear.addEventListener('click', function () {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
+  })
+}
+
+// 设置下载为图片
+function setDownloadImage() {
+  let download = document.querySelector('.download > button')
+  download.addEventListener('click', function () {
+    // toDataURL 为canvas生成图片URL
+    // console.log(canvas.toDataURL("image/png"))
+    // 新建一个a标签，设置好href、download属性，再模拟点击下载
+    let a = document.createElement('a')
+    a.href = canvas.toDataURL("image/png")
+    a.download = 'canvas_png'
+    a.target = '_blank'
+    document.body.appendChild(a)
+    a.click()
   })
 }
 
