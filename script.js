@@ -118,9 +118,14 @@ function listenToUser() {
       paintingLock = false
     })
   } else {
+
     // PC端监听鼠标
+
     canvas.onmousedown = function (e) {
       paintingLock = true
+      // 只要开始画，就立刻将inputColor.value赋值给color
+      color = inputColor.value
+
       let x = e.clientX
       let y = e.clientY
 
@@ -166,7 +171,6 @@ function setPencil() {
   pencilButton.addEventListener('click', function () {
     useEraser = false
     pencilSize = 4
-    inputColor.disabled = useEraser
   })
 }
 
@@ -176,7 +180,6 @@ function setBrush() {
   brushButton.addEventListener('click', function () {
     useEraser = false
     pencilSize = 10
-    inputColor.disabled = useEraser
   })
 }
 
@@ -185,7 +188,7 @@ function setEraser() {
   let eraserButton = document.querySelector('.eraser > button')
   eraserButton.addEventListener('click', function () {
     useEraser = true
-    inputColor.disabled = useEraser
+    pencilSize = 20
   })
 }
 
