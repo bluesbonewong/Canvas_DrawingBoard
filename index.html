@@ -2,7 +2,8 @@
 <html lang="ch">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="style.css">
 	<title>Bluesbone的画板</title>
@@ -11,21 +12,48 @@
 <canvas id="canvas" width=400 height=400></canvas>
 <ul class="buttons">
 	<li class="color-board">
-		<button>调色板</button>
+		<input type="color">
+			<!--<svg class="icon" aria-hidden="true">-->
+				<!--<use xlink:href="#icon-diaosebanpalette3"></use>-->
+			<!--</svg>-->
 	</li>
-	<li class="pencil">
-		<button>画笔</button>
+	<li class="pencil selector active">
+		<button>
+			<svg class="icon" aria-hidden="true">
+				<use xlink:href="#icon-qianbipencil82"></use>
+			</svg>
+		</button>
 	</li>
-	<li class="eraser">
-		<button>橡皮擦</button>
+	<li class="brush selector">
+		<button>
+			<svg class="icon" aria-hidden="true">
+				<use xlink:href="#icon-b_maobi"></use>
+			</svg>
+		</button>
 	</li>
-	<li class="pencil-size">
-		<button>画笔大小</button>
+	<li class="eraser selector">
+		<button>
+			<svg class="icon" aria-hidden="true">
+				<use xlink:href="#icon-xiangpica"></use>
+			</svg>
+		</button>
 	</li>
 	<li class="reset-board">
-		<button>重置画板</button>
+		<button>
+			<svg class="icon" aria-hidden="true">
+				<use xlink:href="#icon-icon-"></use>
+			</svg>
+		</button>
+	</li>
+	<li class="download">
+		<button>
+			<svg class="icon" aria-hidden="true">
+				<use xlink:href="#icon-xiazai"></use>
+			</svg>
+		</button>
 	</li>
 </ul>
 </body>
+<script src="//at.alicdn.com/t/font_648751_iw93lhdzs8e8w7b9.js"></script>
 <script src="script.js"></script>
 </html>

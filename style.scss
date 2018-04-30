@@ -4,6 +4,15 @@
   list-style: none;
 }
 
+.icon {
+  width: 2em;
+  height: 2em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+  transition: all .3s;
+}
+
 #canvas {
   background: white;
   display: block;
@@ -11,12 +20,41 @@
 }
 
 .buttons {
-  border: 1px solid;
+  //border: 1px solid;
   position: fixed;
   top: 0;
   right: 10px;
 
-  li > button {
-    display: block;
+  li {
+    margin: 30px 0;
+
+    > input[type='color'],
+    button {
+      display: block;
+      width: 36px;
+      height: 36px;
+      border: none;
+      outline: none;
+      padding: 6px;
+      background: #D8D2D3;
+      border-radius: 100%;
+    }
+
+    > input[type='color'] {
+      padding: 0;
+
+      &::-webkit-color-swatch-wrapper {
+        border-radius: 100%;
+        background-image: radial-gradient(#ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+      }
+      &::-webkit-color-swatch {
+        display: none;
+      }
+    }
+
+  }
+
+  .selector.active .icon {
+    fill: #E23150;
   }
 }

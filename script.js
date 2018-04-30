@@ -17,6 +17,8 @@ setPencil()
 setEraser()
 // 调色板
 
+// 设置toggleClass
+toggleClass()
 /*********/
 
 // 画笔功能封装
@@ -151,27 +153,25 @@ function listenToUser() {
 
 // 设置画笔
 function setPencil() {
-  let pencil = document.querySelector('.pencil')
-  pencil.addEventListener('click', function (e) {
+  let pencilButton = document.querySelector('.pencil > button')
+  pencilButton.addEventListener('click', function (e) {
     console.log(e.target.tagName)
-    if (e.target.tagName === 'BUTTON') {
-      useEraser = false
-      colorBoard.disabled = useEraser
-      console.log(2)
-    }
+    console.log(e.currentTarget)
+    useEraser = false
+    colorBoard.disabled = useEraser
+    console.log(2)
   })
 }
 
 // 设置橡皮擦
 function setEraser() {
-  let eraser = document.querySelector('.eraser')
-  eraser.addEventListener('click', function (e) {
-    console.log(e.target.tagName)
-    if (e.target.tagName === 'BUTTON') {
-      useEraser = true
-      colorBoard.disabled = useEraser
-      console.log(1)
-    }
+  let eraserButton = document.querySelector('.eraser > button')
+  eraserButton.addEventListener('click', function (e) {
+    console.log(1)
+    console.log(e.target)
+    console.log(e.currentTarget)
+    useEraser = true
+    colorBoard.disabled = useEraser
   })
 }
 
@@ -179,5 +179,19 @@ function setEraser() {
 function setColorBoard() {
 
 }
+
+// toggleClass
+function toggleClass() {
+  let selectors = document.querySelectorAll('.buttons .selector')
+  for (let i = 0; i < selectors.length; i++) {
+    selectors[i].addEventListener('click', function (e) {
+      for (let j = 0; j < selectors.length; j++) {
+        selectors[j].classList.remove('active')
+      }
+      e.currentTarget.classList.add('active')
+    })
+  }
+}
+
 
 
