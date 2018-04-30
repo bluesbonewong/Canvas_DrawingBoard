@@ -80,6 +80,7 @@ function listenToUser() {
     // 移动端监听touch事件
     canvas.addEventListener('touchstart', function (e) {
       console.log('碰我了', e)
+      e.preventDefault()
 
       paintingLock = true
       // 只要开始画，就立刻将inputColor.value赋值给color
@@ -101,6 +102,8 @@ function listenToUser() {
     })
 
     canvas.addEventListener('touchmove', function (e) {
+      e.preventDefault()
+
       if (paintingLock) {
         let x = e.touches[0].clientX
         let y = e.touches[0].clientY
@@ -118,7 +121,9 @@ function listenToUser() {
       }
     })
 
-    canvas.addEventListener('touchend', function () {
+    canvas.addEventListener('touchend', function (e) {
+      e.preventDefault()
+
       paintingLock = false
     })
   } else {
