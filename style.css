@@ -33,15 +33,10 @@ body {
       border: none;
       outline: none;
       padding: 6px;
-      background: #D8D2D3;
-      border-radius: 100%; }
+      background: #D8D2D3; }
     .buttons li > input[type='color'] {
-      padding: 0; }
-      .buttons li > input[type='color']::-webkit-color-swatch-wrapper {
-        border-radius: 100%;
-        background-image: radial-gradient(#ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%); }
-      .buttons li > input[type='color']::-webkit-color-swatch {
-        display: none; }
+      padding: 0;
+      background: none; }
   .buttons .selector.active .icon {
     fill: #E23150; }
 
