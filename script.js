@@ -7,8 +7,6 @@ let useEraser = false
 let color = 'black'
 // 全局变量 —— 画笔大小控制
 let pencilSize = 4
-// 全局的调色板元素，给画笔/橡皮擦/调色板提供调用
-let colorBoard = document.querySelector('.color-board > button')
 // 获取到input-color，便于调节颜色
 let inputColor = document.querySelector('.buttons > .color-board input')
 autoSetCanvasPage(canvas)
