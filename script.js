@@ -21,6 +21,8 @@ setPencil()
 setBrush()
 // 橡皮擦
 setEraser()
+// 重置画板
+setClearCanvas()
 
 // 设置toggleClass
 toggleClass()
@@ -203,6 +205,14 @@ function toggleClass() {
       e.currentTarget.classList.add('active')
     })
   }
+}
+
+// 清空画板
+function setClearCanvas() {
+  let clear = document.querySelector('.reset-board > button')
+  clear.addEventListener('click', function () {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+  })
 }
 
 
