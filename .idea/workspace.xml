@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f4c3b3f-f57f-47b6-a6e2-d03782d2a5b9" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -16,18 +18,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="47" column="2" lean-forward="true" selection-start-line="47" selection-start-column="2" selection-end-line="47" selection-end-column="2" />
+            <state relative-caret-position="-123">
+              <caret line="4" selection-start-line="4" selection-end-line="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/script.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="87" column="55" selection-start-line="87" selection-start-column="55" selection-end-line="87" selection-end-column="55" />
               <folding>
-                <element signature="e#1877#1959#0" />
-                <element signature="e#2015#2156#0" />
-                <element signature="e#2793#3149#0" />
-                <element signature="e#2395#3265#0" />
-                <element signature="e#3151#3402#0" />
-                <element signature="e#3172#3422#0" />
+                <element signature="n#!!block;n#setPencil#0" />
+                <element signature="n#!!block;n#setEraser#0" />
               </folding>
             </state>
           </provider>
@@ -48,9 +55,13 @@
     <findStrings>
       <find>;</find>
       <find>getClientPage</find>
+      <find>listenToMouse</find>
+      <find>changedTouches</find>
     </findStrings>
     <replaceStrings>
       <replace>setCanvasPage</replace>
+      <replace>listenToUser</replace>
+      <replace>touches</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -63,6 +74,7 @@
         <option value="$PROJECT_DIR$/test.html" />
         <option value="$PROJECT_DIR$/style.scss" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/script.js" />
       </list>
     </option>
   </component>
@@ -129,18 +141,18 @@
       <option name="presentableId" value="Default" />
       <updated>1524738014873</updated>
       <workItem from="1524738016290" duration="9522000" />
-      <workItem from="1524885892459" duration="6841000" />
+      <workItem from="1524885892459" duration="11407000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16363000" />
+    <option name="totallyTimeSpent" value="20929000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" anchor="right" content_ui="combo" id="Project" order="3" visible="true" weight="0.25787964" />
+      <window_info anchor="right" content_ui="combo" id="Project" order="3" visible="true" weight="0.25787964" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -170,14 +182,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1560">
           <caret line="60" column="18" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="18" />
-          <folding>
-            <element signature="e#1877#1959#0" />
-            <element signature="e#2015#2156#0" />
-            <element signature="e#2793#3149#0" />
-            <element signature="e#2395#3265#0" />
-            <element signature="e#3151#3402#0" />
-            <element signature="e#3172#3422#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -223,15 +227,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="47" column="2" lean-forward="true" selection-start-line="47" selection-start-column="2" selection-end-line="47" selection-end-column="2" />
+        <state relative-caret-position="-123">
+          <caret line="4" selection-start-line="4" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="87" column="55" selection-start-line="87" selection-start-column="55" selection-end-line="87" selection-end-column="55" />
           <folding>
-            <element signature="e#1877#1959#0" />
-            <element signature="e#2015#2156#0" />
-            <element signature="e#2793#3149#0" />
-            <element signature="e#2395#3265#0" />
-            <element signature="e#3151#3402#0" />
-            <element signature="e#3172#3422#0" />
+            <element signature="n#!!block;n#setPencil#0" />
+            <element signature="n#!!block;n#setEraser#0" />
           </folding>
         </state>
       </provider>
