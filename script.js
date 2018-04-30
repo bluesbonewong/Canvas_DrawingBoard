@@ -5,6 +5,8 @@ let ctx = canvas.getContext('2d')
 let useEraser = false
 // 全局变量 —— 颜色控制
 let color = 'black'
+// 全局变量 —— 画笔大小控制
+let pencilSize = 4
 // 全局的调色板元素，给画笔/橡皮擦/调色板提供调用
 let colorBoard = document.querySelector('.color-board > button')
 // 获取到input-color，便于调节颜色
@@ -15,6 +17,8 @@ listenToUser()
 // 侧边栏工具条
 // 铅笔
 setPencil()
+// 毛笔
+setBrush()
 // 橡皮擦
 setEraser()
 
@@ -24,17 +28,18 @@ toggleClass()
 
 // 画笔功能封装
 function drawCircle(x, y, radius, color) {
+  radius = radius / 2
   ctx.beginPath()
   ctx.fillStyle = color
   ctx.arc(x, y, radius, 0, Math.PI * 2)
   ctx.fill()
 }
 
-function drawLine(lastX, lastY, currentX, currentY, color) {
+function drawLine(lastX, lastY, currentX, currentY, color, pencilSize) {
   ctx.beginPath()
   ctx.moveTo(lastX, lastY) // 起点
   ctx.strokeStyle = color
-  ctx.lineWidth = 10
+  ctx.lineWidth = pencilSize
   ctx.lineTo(currentX, currentY) // 终点
   ctx.stroke()
 }
@@ -85,9 +90,9 @@ function listenToUser() {
 
       // 判断用户是否使用的是橡皮擦
       if (useEraser) {
-        drawCircle(x, y, 5, 'white')
+        drawCircle(x, y, pencilSize, 'white')
       } else {
-        drawCircle(x, y, 5, color)
+        drawCircle(x, y, pencilSize, color)
       }
     })
 
@@ -96,11 +101,11 @@ function listenToUser() {
         let x = e.touches[0].clientX
         let y = e.touches[0].clientY
         if (useEraser) {
-          drawLine(lastPoint.x, lastPoint.y, x, y, 'white')
-          drawCircle(x, y, 5, 'white')
+          drawLine(lastPoint.x, lastPoint.y, x, y, 'white', pencilSize)
+          drawCircle(x, y, pencilSize, 'white')
         } else {
-          drawLine(lastPoint.x, lastPoint.y, x, y, color)
-          drawCircle(x, y, 5, color)
+          drawLine(lastPoint.x, lastPoint.y, x, y, color, pencilSize)
+          drawCircle(x, y, pencilSize, color)
         }
 
         // 一结束就要更新lastPoint的值为最新监听到的点
@@ -125,9 +130,9 @@ function listenToUser() {
 
       // 判断用户是否使用的是橡皮擦
       if (useEraser) {
-        drawCircle(x, y, 5, 'white')
+        drawCircle(x, y, pencilSize, 'white')
       } else {
-        drawCircle(x, y, 5, color)
+        drawCircle(x, y, pencilSize, color)
       }
     }
 
@@ -136,11 +141,11 @@ function listenToUser() {
         let x = e.clientX
         let y = e.clientY
         if (useEraser) {
-          drawLine(lastPoint.x, lastPoint.y, x, y, 'white')
-          drawCircle(x, y, 5, 'white')
+          drawLine(lastPoint.x, lastPoint.y, x, y, 'white', pencilSize)
+          drawCircle(x, y, pencilSize, 'white')
         } else {
-          drawLine(lastPoint.x, lastPoint.y, x, y, color)
-          drawCircle(x, y, 5, color)
+          drawLine(lastPoint.x, lastPoint.y, x, y, color, pencilSize)
+          drawCircle(x, y, pencilSize, color)
         }
 
         // 一结束就要更新lastPoint的值为最新监听到的点
@@ -155,21 +160,32 @@ function listenToUser() {
   }
 }
 
-// 设置铅笔
+// 设置铅笔事件监听
 function setPencil() {
   let pencilButton = document.querySelector('.pencil > button')
-  pencilButton.addEventListener('click', function (e) {
+  pencilButton.addEventListener('click', function () {
     useEraser = false
-    colorBoard.disabled = useEraser
+    pencilSize = 4
+    inputColor.disabled = useEraser
   })
 }
 
-// 设置橡皮擦
+// 设置毛笔事件监听
+function setBrush() {
+  let brushButton = document.querySelector('.brush > button')
+  brushButton.addEventListener('click', function () {
+    useEraser = false
+    pencilSize = 10
+    inputColor.disabled = useEraser
+  })
+}
+
+// 设置橡皮擦事件监听
 function setEraser() {
   let eraserButton = document.querySelector('.eraser > button')
-  eraserButton.addEventListener('click', function (e) {
+  eraserButton.addEventListener('click', function () {
     useEraser = true
-    colorBoard.disabled = useEraser
+    inputColor.disabled = useEraser
   })
 }
 
